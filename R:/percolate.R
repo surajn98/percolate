@@ -97,3 +97,13 @@ ggplot(data = elapsed_time, aes(x = avg_time, y = n_squared)) +
        y = "n^2",
        title = "Average Elapsed Time vs n^2")
 
+# draw regression
+time_lm <- lm(avg_time ~ n_squared, data = elapsed_time)
+
+ggplot(data = elapsed_time, aes(x = avg_time, y = n_squared)) +
+  geom_line() +
+  geom_abline(slope = coef(time_lm)[2],
+              intercept = coef(time_lm)[1], color = "red") +
+  labs(x = "Average Elapsed Time",
+       y = "n^2",
+       title = "Average Elapsed Time vs n^2")
