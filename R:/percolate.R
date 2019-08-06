@@ -107,3 +107,34 @@ ggplot(data = elapsed_time, aes(x = avg_time, y = n_squared)) +
   labs(x = "Average Elapsed Time",
        y = "n^2",
        title = "Average Elapsed Time vs n^2")
+
+# see how fraction of p affects percolation
+p <- seq(0, 1, by = 0.05)
+percolate_percent <- vector(length = 3)
+
+n <- 5
+count <- 0
+for (i in 1:length(p)){
+  b <- board(generate_board_mat(n,p[i]))
+  if(percolate(b)[[2]] == TRUE) count <- count+1
+}
+percolate_percent[1] <- count/length(p)
+
+n <- 10
+count <- 0
+for (i in 1:length(p)){
+  b <- board(generate_board_mat(n,p[i]))
+  if(percolate(b)[[2]] == TRUE) count <- count+1
+}
+percolate_percent[2] <- count/length(p)
+
+n <- 25
+count <- 0
+for (i in 1:length(p)){
+  b <- board(generate_board_mat(n,p[i]))
+  if(percolate(b)[[2]] == TRUE) count <- count+1
+}
+percolate_percent[3] <- count/length(p)
+
+percolate_percent
+
