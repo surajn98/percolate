@@ -28,3 +28,12 @@ plot <- function(x){
     theme(legend.position = "none") +
     labs(title = paste0(n," x ",n," board: ", n*n, " total squares"))
 }
+
+library(gridExtra)
+
+output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_large.txt")
+
+pre_percolate <- plot(output[[1]])
+post_percolate <- plot(percolate(output[[1]])$result_board)
+
+grid.arrange(pre_percolate,post_percolate,ncol = 2)
