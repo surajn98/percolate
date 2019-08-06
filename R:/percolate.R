@@ -88,3 +88,12 @@ for (i in 1:10){
   }
   avgs[i] <- sum_time/10
 }
+
+elapsed_time <- data.frame(n_squared = n^2, avg_time = avgs)
+
+ggplot(data = elapsed_time, aes(x = avg_time, y = n_squared)) +
+  geom_line() +
+  labs(x = "Average Elapsed Time",
+       y = "n^2",
+       title = "Average Elapsed Time vs n^2")
+
