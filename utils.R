@@ -25,5 +25,17 @@ generate_board_mat <- function(n = 5, p = 0.25){
 }
 
 
+#' is_valid helper function to check validity of matrix
+#'
+#' @param mat a matrix
+#'
+#' @return either TRUE if mat is a valid matrix or an error
+#' @export
+#'
+#' @examples print(is_valid(generate_board_mat())), print(is_valid(generate_board_mat(n = 1)))
+is_valid <- function(mat){
+  assert_that(nrow(mat) == ncol(mat) && (mat == 0 || mat == 1 || mat == 2))
+  return(TRUE)
+}
 
 
