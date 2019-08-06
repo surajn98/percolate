@@ -65,4 +65,48 @@ for (i in 1:length(output)){
   })
 }
 
+# more read_boards tests
+expect_result_list <- vector(length = 1, mode = "list")
+expect_result_list[[1]] <- NA
 
+# test 1
+test1_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test1.txt")
+
+test_that("read_boards works on incorrect number of rows", {
+  expect_true(identical(test1_output,expect_result_list))
+})
+
+# test 2
+test2_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test2.txt")
+
+test_that("read_boards works on incorrect character in rows", {
+  expect_true(identical(test2_output,expect_result_list))
+})
+
+# test 3
+test3_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test3.txt")
+
+test_that("read_boards works on no n specified", {
+  expect_true(identical(test3_output,expect_result_list))
+})
+
+# test 4
+test4_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test4.txt")
+
+test_that("read_boards works on incorrect characters in rows", {
+  expect_true(identical(test4_output,expect_result_list))
+})
+
+# test 5
+test5_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test5.txt")
+
+test_that("read_boards works on incorrect number of columns", {
+  expect_true(identical(test5_output,expect_result_list))
+})
+
+# test 6
+test6_output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test6.txt")
+
+test_that("read_boards works on negative n provided", {
+  expect_true(identical(test6_output,expect_result_list))
+})
