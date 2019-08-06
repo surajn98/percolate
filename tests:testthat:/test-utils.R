@@ -46,3 +46,23 @@ test_mat_3 <- 2
 test_that("is_valid fails on an input that is not a matrix.", {
   expect_error(is_valid(test_mat_3))
 })
+
+
+# read_boards tests
+output <- read_boards("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolation_write_test.txt")
+
+file <- url("https://raw.githubusercontent.com/benjaminleroy/36-350-summer-data/master/Week5/percolate_test.Rdata")
+load(file = file)
+
+for (i in 1:length(output)){
+  test_that("output is the same as board_list", {
+    expect_true(identical(attr(output[[i]],"class"),
+                          attr(board_list[[i]],"class")),
+                identical(attr(output[[i]],"n"),
+                          attr(board_list[[i]],"n")),
+                identical(attr(output[[i]],"p"),
+                          attr(board_list[[i]],"p")))
+  })
+}
+
+
